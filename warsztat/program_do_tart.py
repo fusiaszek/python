@@ -1,0 +1,5 @@
+y = str(input('Jakie chcesz zrobić ciasto? '))
+x = int(input('Ile kawałków ma jedno ciasto? '))
+z = int(input('Ilu będziesz miał gości? '))
+g = int(input('Ile średnio kawałków je jeden gość? '))
+print('Aby nakarmić '+str(z)+' gości ciastem '+y+' potrzebujesz upiec '+str(int(z*g/x)+1)+' ciasta i zostanie ci '+str(x-(z*g%x))+' części ciasta ')
