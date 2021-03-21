@@ -34,3 +34,9 @@ for y in range(wysokosc):
         mc.setBlock(xg+rozmiar-1,yg+y,zg+z,100)
         if z%2==0:
             mc.setBlock(xg + rozmiar-1, yg + wysokosc, zg + z, 100)
+for y in range(2):
+    for x in range(5):
+        for z in range(5):
+            mc.setBlock(xg+rozmiar+3+x,yg+y,zg+z,100)
+            if x%2==0 and z%2==0:
+                mc.setBlock(xg + rozmiar+3 + x, yg+2, zg + z, 100)
