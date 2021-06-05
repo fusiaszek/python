@@ -1,16 +1,6 @@
 import random
 
-# lista = [1,2,3,4]
-# lista_zagniezdzona = [
-#     lista,
-#     lista, 
-#     lista,
-#     lista
-# ]
-# lista_zagniezdzona2 = [["puste" for i in range(4)] for j in range(4)]
-# for lista in lista_zagniezdzona2:
-#     print(*lista)
-random.seed(53)
+random.seed(random.randrange(123456789))
 
 alfabet = "ABCDEFGHIJKLMNOPRSTUWYZ"
 
@@ -19,26 +9,60 @@ def losuj_literke():
     wylosowana_literka = alfabet[rand_index]
     return wylosowana_literka
 
+def losuj(zakres):
+    return random.randrange(zakres)
+
 def inicjalizacja_board(board):
     pass
 
 def drukuj_board(board):
     for wiersz in board:
-        print(*wiersz)
+        print(wiersz)
 
-def generate_board(height, width):
-    board = [["-" for i in range(1, width+1)] for i in range(1, height+1)]
-    ilosc_par = (height * width) / 2
+def losuj_pary(ilosc):
     rodzaje_kart = []
-    wylosowana_literka = "A"
+    wylosowana_literka = alfabet[random.randrange(len(alfabet)-1)]
 
-    for i in range(int(ilosc_par)):
+    for i in range(int(ilosc)):
         while(wylosowana_literka in rodzaje_kart):
             wylosowana_literka = losuj_literke()
         rodzaje_kart.append(wylosowana_literka)
+    return rodzaje_kart
+
+def generate_board(height, width):
+    board = [["-" for i in range(width)] for i in range(height)]
+    return board
+
+def wolne_miejsca(board):
+    for wiersz in board:
+        for kolumna in wiersz:
+            if kolumna=='-':
+                return True
+    return False
+
+def losuj_karty(height, width):
+    ilosc_par = (height * width) / 2
+    rodzaje_kart = losuj_pary(ilosc_par)
+    return rodzaje_kart
+
+def wolne_pole(board, x, y):
+    if board[x][y] == '-':
+        return True
+    return False
     
-    print(rodzaje_kart)
-
-
-generate_board(4, 4)
-
+def uzupelnij_board(height, width, board, karty):
+    for karta in karty:
+        for i in range(2):
+            x=0
+            y=0
+            while(wolne_miejsca(board) and not wolne_pole(board, x, y)):
+                x=losuj(width)
+                y=losuj(height)
+            board[x][y]=karta
+     
+height = 4
+width = 4
+board = generate_board(height, width)
+karty = losuj_karty(height, width)
+uzupelnij_board(height, width, board, karty)
+drukuj_board(board)
