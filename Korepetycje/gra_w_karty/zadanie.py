@@ -1,4 +1,6 @@
 import random
+import time
+import os
 
 random.seed(random.randrange(123456789))
 
@@ -16,8 +18,10 @@ def inicjalizacja_board(board):
     pass
 
 def drukuj_board(board):
+    os.system('cls')
     for wiersz in board:
         print(wiersz)
+    print('\n')
 
 def losuj_pary(ilosc):
     rodzaje_kart = []
@@ -60,9 +64,73 @@ def uzupelnij_board(height, width, board, karty):
                 y=losuj(height)
             board[x][y]=karta
      
-height = 4
-width = 4
+height = 2
+width = 2
 board = generate_board(height, width)
 karty = losuj_karty(height, width)
 uzupelnij_board(height, width, board, karty)
-drukuj_board(board)
+# drukuj_board(board)
+board_uzytkownika = generate_board(height, width)
+while wolne_miejsca(board_uzytkownika):
+    drukuj_board(board_uzytkownika)
+    wspolrzednex = int(input('podaj wspolrzendna x '))
+    wspolrzedney = int(input('podaj wspolrzendna y '))
+    board_uzytkownika[wspolrzedney-1][wspolrzednex-1]=board[wspolrzedney-1][wspolrzednex-1]
+    drukuj_board(board_uzytkownika)
+    wspolrzednex2 = int(input('podaj wspolrzendna x '))
+    wspolrzedney2 = int(input('podaj wspolrzendna y '))
+    board_uzytkownika[wspolrzedney2-1][wspolrzednex2-1]=board[wspolrzedney2-1][wspolrzednex2-1]
+    drukuj_board(board_uzytkownika)
+    time.sleep(2)
+    if board_uzytkownika[wspolrzedney2-1][wspolrzednex2-1]==board_uzytkownika[wspolrzedney-1][wspolrzednex-1]:
+        board_uzytkownika[wspolrzedney2-1][wspolrzednex2-1]='*'
+        board_uzytkownika[wspolrzedney-1][wspolrzednex-1]='*'
+    if board_uzytkownika[wspolrzedney2-1][wspolrzednex2-1]!=board_uzytkownika[wspolrzedney-1][wspolrzednex-1]:
+        board_uzytkownika[wspolrzedney2-1][wspolrzednex2-1]='-'
+        board_uzytkownika[wspolrzedney-1][wspolrzednex-1]='-'
+for i in range(1,6):
+    os.system('cls')
+    print(6-i)
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + 'gratulacje')
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + '恭喜')
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + 'Congratulazioni')
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + 'Котлыйбыз')
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + 'تهانينا')
+    time.sleep(1)
+
+for i in range(1,3):
+    os.system('cls')
+    print(i*' ' + 'Gratulujeme')
+
+import turtle
+import random
+
+skk = turtle.Turtle()
+lista=['red','blue']
+for i in range(40):
+    skk.color(random.choice(lista))
+    skk.forward(70)
+    skk.right(90)
+    skk.color(random.choice(lista))
+    skk.forward(40)
+    skk.right(100)
