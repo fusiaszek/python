@@ -1,15 +1,14 @@
-masaciala = float ( input ( 'jaka masz mase ciala ' ) )
 
-plec = input ( 'jak masz plec (k lub m) ' )
 
-wzrost = float ( input ( 'ile masz wzrostu ' ) )
-
-wiek = float ( input ( 'ile masz lat ' ) )
+masaciala = float(input('jaka masz mase ciala'))
+plec = input('jak masz plec (k lub m)')
+wzrost = float(input( 'ile masz wzrostu'))
+wiek = float(input('ile masz lat '))
 
 BMR = 0
 
 if plec == 'm':
-    BMR = ( 10 * masaciala ) + ( 6.25 * wzrost ) - ( 5 * wiek ) + 5
+    BMR = (10*masaciala) + (6.25*wzrost) - (5*wiek) + 5
 
 if plec == 'k' :
     BMR = ( 10 * masaciala ) + ( 6.25 * wzrost ) - ( 5 * wiek ) - 161
@@ -38,8 +37,10 @@ print('Aby schudnac ' + str(schudnac) + ' kCal')
 print('Aby przytyc ' + str(przytyc) + ' kCal')
 
 bialko = 1.1 * masaciala
-wegle = BMR * 0.5
+wegle = 0.14 * BMR * 0.5
+wszystko = wegle * 2
+tluszcze = wszystko - bialko - wegle
 
 print('Musisz jesc ' + str(bialko) + 'g bialka')
-print('Musisz jesc ' + str(wegle) + ' kCal weglowodanow')
-print('Reszta tluszcze')
+print('Musisz jesc ' + str(wegle) + 'g weglowodanow')
+print('Musisz jesc ' + str(tluszcze) + 'g tluszczy')
