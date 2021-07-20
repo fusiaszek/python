@@ -135,7 +135,7 @@ class Hangar:
     def __init__(self) -> None:
         self.nazwa = random.randint(1,25)
         self.ilosc_miejsc = 5
-        self.samoloty = [0 for j in range(self.ilosc_miejsc)]
+        self.samoloty = [0 for j in range(self.ilosc_miejsc)]   
 
 class Lotnisko:
 
